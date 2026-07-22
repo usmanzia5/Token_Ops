@@ -234,6 +234,24 @@
   .moat b{color:var(--accent-deep)}
   .tbd{color:var(--ink-faint);font-style:italic;font-size:14px}
 
+  /* TAM/SAM/SOM nested market chart */
+  .tam-wrap{
+    display:grid;
+    grid-template-columns:minmax(210px,290px) 1fr;
+    gap:28px;align-items:center;margin:20px 0 6px;
+  }
+  .tam-chart{width:100%;height:auto;display:block}
+  .tam-legend{display:grid;gap:16px}
+  .tam-item{display:flex;gap:12px;align-items:flex-start}
+  .tam-swatch{flex:0 0 auto;width:14px;height:14px;border-radius:4px;margin-top:5px;border:1px solid rgba(193,95,60,.5)}
+  .tam-item .lab{font-size:clamp(13.5px,1.5vw,15.5px);line-height:1.45;color:var(--ink-soft);max-width:42ch}
+  .tam-item .lab b{color:var(--ink);font-weight:650}
+  .tam-item .lab .val{color:var(--accent-deep);font-weight:700}
+  @media (max-width:760px){
+    .tam-wrap{grid-template-columns:1fr;gap:18px}
+    .tam-chart{max-width:280px;margin:0 auto}
+  }
+
   /* Product diagram */
   .product-diagram{
     display:grid;
@@ -469,7 +487,7 @@
 
 <footer>
   <button class="ctrl" id="prev" aria-label="Previous slide">‹</button>
-  <div class="counter"><span id="count">01 / 15</span><span class="name" id="cur-name">Title</span></div>
+  <div class="counter"><span id="count">01 / 16</span><span class="name" id="cur-name">Title</span></div>
   <button class="ctrl" id="next" aria-label="Next slide">›</button>
 </footer>
 
@@ -625,18 +643,56 @@ const slides = [
       </ol>`
   },
   {
-    label:"Market", n:"09",
-    html:`<div class="eyebrow">Market</div>
-      <h2>A vertical wedge into a category forming now.</h2>
+    label:"Customer", n:"09",
+    html:`<div class="eyebrow">Customer &amp; Beachhead</div>
+      <h2>We sell to the people who feel the pain first.</h2>
+      <p class="lead">Design-verification, CAD-infrastructure, and engineering-productivity teams at fabless, IP, and design-service companies (roughly 200 to 5,000 employees).</p>
       <ul class="clean">
-        <li><strong>Beachhead:</strong> design-verification teams at fabless, IP, and design-service companies.</li>
-        <li><strong>Expand:</strong> all of verification, then the economic layer for AI across complex engineering (physical AI, aerospace).</li>
-        <li><strong>Anchor:</strong> enterprise GenAI spend $37B in 2025 and tripling; AI ROI tooling is a net-new budget line.</li>
+        <li><strong>Minimum fit:</strong> already running AI coding tools, engineering agents, or AI-enabled EDA across multiple teams. Big enough to have real spend, small enough to move fast.</li>
+        <li><strong>Strong fit:</strong> a verification org feeling renewal or budget pressure, with usage and outcome data it can actually access.</li>
+        <li><strong>Poor fit:</strong> no material AI spend yet, no clear budget owner, or a giant incumbent that builds everything in-house (a later target, not the wedge).</li>
       </ul>
-      <p class="tbd">Bottom-up market sizing to be finalized: chip teams &times; AI-tooling spend &times; ACV.</p>`
+      <div class="callout"><div class="k">Who signs</div>
+        <p>User: verification and methodology engineers. Champion and economic buyer: VP or Director of Verification. Budget sits in engineering, not finance, which is exactly why we sell the outcome metric first.</p></div>
+      <p class="tbd">First ~10 named target accounts drawn from the founders' network, with warm intros, to be finalized.</p>`
   },
   {
-    label:"Competition & Moat", n:"10",
+    label:"Market", n:"10",
+    html:`<div class="eyebrow">Market</div>
+      <h2>A $2B+ category, entered through a wedge only we can own.</h2>
+      <p class="lead">The real market is proving AI's return across engineering. We enter where the outcome data is hardest to reach, and where we already speak the language: chip verification.</p>
+      <div class="tam-wrap">
+        <svg class="tam-chart" viewBox="0 0 300 300" role="img" aria-label="Nested TAM, SAM, and SOM market chart">
+          <circle cx="150" cy="150" r="142" fill="rgba(217,119,87,.11)" stroke="rgba(217,119,87,.34)" stroke-width="1.5"/>
+          <circle cx="150" cy="150" r="95" fill="rgba(217,119,87,.24)" stroke="rgba(217,119,87,.46)" stroke-width="1.5"/>
+          <circle cx="150" cy="150" r="49" fill="#D97757" stroke="#C15F3C" stroke-width="1.5"/>
+          <text x="150" y="30" text-anchor="middle" font-size="11" font-weight="700" fill="#6B6357" letter-spacing="1.2">TAM</text>
+          <text x="150" y="49" text-anchor="middle" font-size="18" font-weight="700" fill="#1F1E1B" style="font-family:'Iowan Old Style',Palatino,Georgia,serif">$2&ndash;5B+</text>
+          <text x="150" y="70" text-anchor="middle" font-size="11" font-weight="700" fill="#6B6357" letter-spacing="1.2">SAM</text>
+          <text x="150" y="89" text-anchor="middle" font-size="17" font-weight="700" fill="#1F1E1B" style="font-family:'Iowan Old Style',Palatino,Georgia,serif">$25&ndash;75M</text>
+          <text x="150" y="145" text-anchor="middle" font-size="10" font-weight="700" fill="#FAF8F3" letter-spacing="1.2">SOM</text>
+          <text x="150" y="165" text-anchor="middle" font-size="16" font-weight="700" fill="#FAF8F3" style="font-family:'Iowan Old Style',Palatino,Georgia,serif">$1&ndash;6M</text>
+        </svg>
+        <div class="tam-legend">
+          <div class="tam-item">
+            <span class="tam-swatch" style="background:rgba(217,119,87,.28)"></span>
+            <span class="lab"><b>Category TAM &middot; <span class="val">$2&ndash;5B+</span></b><br>AI-spend-to-outcome governance across engineering-intensive industries: semiconductors, automotive, aerospace, large software.</span>
+          </div>
+          <div class="tam-item">
+            <span class="tam-swatch" style="background:rgba(217,119,87,.5)"></span>
+            <span class="lab"><b>Semiconductor SAM &middot; <span class="val">$25&ndash;75M ARR</span></b><br>500 to 1,000 qualified chip-design orgs already adopting AI in engineering, at a $40&ndash;60K blended ACV.</span>
+          </div>
+          <div class="tam-item">
+            <span class="tam-swatch" style="background:#D97757"></span>
+            <span class="lab"><b>5-year SOM &middot; <span class="val">$1&ndash;6M ARR</span></b><br>25 to 75 semiconductor customers as we prove the model and build trusted benchmarks.</span>
+          </div>
+        </div>
+      </div>
+      <p>Bottom-up: ~5,000 fabless companies and 12,000 design centers worldwide; AI-in-chip-design spend is inflecting now (growing ~30% a year off a small base), and enterprise GenAI hit $37B in 2025.</p>
+      <p class="emph">Semiconductor is the wedge, not the ceiling. Path to $100M+: win the beachhead, expand each account into the control plane, then carry the same platform into adjacent engineering verticals.</p>`
+  },
+  {
+    label:"Competition & Moat", n:"11",
     html:`<div class="eyebrow">Competition &amp; Moat</div>
       <h2>Everyone stops at cost. Nobody connects spend to verified value.</h2>
       <table class="grid">
@@ -651,19 +707,26 @@ const slides = [
       <div class="moat"><b>Moat:</b> a cross-customer spend-to-outcome dataset, neutrality across every agent, and eventually a control-plane position in the path.</div>`
   },
   {
-    label:"Business Model & GTM", n:"11",
+    label:"Business Model & GTM", n:"12",
     html:`<div class="eyebrow">Business Model &amp; GTM</div>
       <h2>Land read-only, expand into the path.</h2>
       <ul class="clean">
-        <li><strong>Sell to:</strong> VP or Director of Verification. Engineering trusts the outcome metric before finance trusts the ROI.</li>
-        <li><strong>Motion:</strong> founder-led, then a read-only pilot, then paid deployment, then control-plane expansion.</li>
-        <li><strong>Pricing hypothesis:</strong> platform subscription, expanding as we sit in more of the agent path.</li>
-        <li><strong>Beachhead accounts:</strong> mid-market fabless, IP, and design-service (faster pilots, less internal tooling).</li>
+        <li><strong>Sell to:</strong> VP or Director of Verification. Engineering trusts the outcome metric before finance trusts the ROI number.</li>
+        <li><strong>Motion:</strong> founder-led, then a read-only pilot, then a paid annual contract, then control-plane expansion.</li>
+        <li><strong>Pipeline:</strong> warm intros from the founders' network, plus inbound pulled in by the cost-per-outcome wedge.</li>
       </ul>
-      <p class="tbd">Pricing model, sales cycle, and unit-economics hypotheses to be finalized.</p>`
+      <table class="grid">
+        <thead><tr><th>Stage</th><th>Price (USD)</th><th>Anchor</th></tr></thead>
+        <tbody>
+          <tr><td>Pilot</td><td>$5&ndash;15K</td><td>fixed fee to prove one workflow</td></tr>
+          <tr><td>Year-1 annual</td><td>$20&ndash;40K</td><td>~10&ndash;15% of managed AI spend</td></tr>
+          <tr><td>Expanded</td><td>$60&ndash;100K+</td><td>multi-team + control plane</td></tr>
+        </tbody>
+      </table>
+      <div class="moat"><b>Unit economics (hypotheses):</b> 75&ndash;85% gross margin at scale; founder-led CAC with under-12-month payback; land-and-expand toward 120%+ net revenue retention; target LTV:CAC above 3:1.</div>`
   },
   {
-    label:"Traction & Roadmap", n:"12",
+    label:"Traction & Roadmap", n:"13",
     html:`<div class="eyebrow">Traction, Validation &amp; Roadmap</div>
       <h2>We know exactly what would prove this, and we're inside the room to prove it.</h2>
       <ul class="clean">
@@ -674,24 +737,29 @@ const slides = [
       </ul>`
   },
   {
-    label:"Team", n:"13",
+    label:"Team", n:"14",
     html:`<div class="eyebrow">Team</div>
       <h2>Two verification engineers who lived this problem.</h2>
       <ul class="clean">
-        <li><strong>Usman</strong>, co-founder. Product, technical thesis, and market insight.</li>
-        <li><strong>Gurinder</strong>, co-founder. Commercial strategy and company building.</li>
-        <li><strong>Unfair advantage:</strong> we know the workflow, the outcome that matters, the systems it lives in, and the buyer.</li>
+        <li><strong>Usman</strong>, co-founder, product, technical thesis, and market insight.</li>
+        <li><strong>Gurinder</strong>, co-founder, commercial strategy, finance, and company building.</li>
+        <li><strong>How we met:</strong> as engineers on the same design-verification team, we lived this exact problem together before we built the company around it.</li>
+        <li><strong>How we run it:</strong> a 50/50 partnership with clear, complementary ownership, product and technical thesis with Usman, commercial and company building with Gurinder.</li>
+        <li><strong>First hire:</strong> a founding engineer for data ingestion and connectors, once a design partner is live.</li>
+        <li><strong>IP hygiene:</strong> we build only on public knowledge and design-partner data under NDA, with independent legal review of any prior obligations before we build.</li>
       </ul>`
   },
   {
-    label:"The Ask", n:"14",
+    label:"The Ask", n:"15",
     html:`<div class="eyebrow">The Ask</div>
       <h2>What we're raising, and where this goes.</h2>
       <ul class="clean">
-        <li><strong>Raising:</strong> pre-seed on a SAFE, aligned to the round's target check size.</li>
-        <li><strong>Use of funds:</strong> roughly 12 to 18 months, to convert design partners into paid pilots, build the first connectors, and make our first technical hire.</li>
-        <li><strong>Milestone this buys:</strong> a design partner whose renewal decision our report changes.</li>
+        <li><strong>Raising:</strong> ~$1&ndash;1.5M pre-seed on a SAFE, ~$10&ndash;15M post-money cap (about 10% dilution). Final structure to reflect milestones and the right investor.</li>
+        <li><strong>Use of funds:</strong> the validation program, the first ingestion connectors, a founding engineer, and roughly 12 to 18 months of founder runway.</li>
+        <li><strong>From N49P specifically:</strong> warm introductions to design-verification, engineering-productivity, and infrastructure leaders already putting AI into their workflows, plus help recruiting operators and building credibility in the semiconductor ecosystem.</li>
       </ul>
+      <div class="callout"><div class="k">What this buys, by milestone</div>
+        <p>30 days: discovery interviews underway and first target accounts identified. 90 days: an anchor read-only design partner live, with the first cost-per-outcome report delivered. 180 days: a partner reallocates, renews, or cancels based on our number, the signal that this is real.</p></div>
       <p class="emph">Vision: become the economic measurement layer for AI in complex engineering, starting with the silicon nobody else can measure.</p>`
   },
   {

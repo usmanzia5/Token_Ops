@@ -2,7 +2,7 @@ I combined your list and the list I had created. But narrowed it down to 10 sect
 
 Let me know what you think?
 
-Usman — Product, Technical Thesis, and Market Insight
+Usman, Product, Technical Thesis, and Market Insight
 
 2. Problem, Pain Point, and Unique Insight
 
@@ -67,7 +67,7 @@ Own:
 
 ⸻
 
-Gurinder — Commercial Strategy, Finance, and Company Building
+Gurinder, Commercial Strategy, Finance, and Company Building
 
 1. Founder–Market Fit and Team
 
@@ -139,7 +139,7 @@ Usman should provide the technical and product risks for this section, while Gur
 
 Questions Both Founders Must Know
 
-Ownership means preparing the section—not being the only person capable of answering it. Both of you should give consistent answers on:
+Ownership means preparing the section, not being the only person capable of answering it. Both of you should give consistent answers on:
 
 * What the company does.
 * What problem it solves.

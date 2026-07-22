@@ -234,6 +234,115 @@
   .moat b{color:var(--accent-deep)}
   .tbd{color:var(--ink-faint);font-style:italic;font-size:14px}
 
+  /* Product diagram */
+  .product-diagram{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) 52px minmax(220px,.92fr) 52px minmax(0,1fr);
+    gap:14px;
+    align-items:center;
+    margin-top:18px;
+  }
+  .diagram-stack{display:grid;gap:12px}
+  .diagram-card{
+    min-height:78px;
+    border:1px solid var(--line);
+    background:rgba(246,241,232,.78);
+    border-radius:8px;
+    padding:15px 16px;
+    overflow-wrap:break-word;
+  }
+  .diagram-card.source{border-left:3px solid #8B7D6B}
+  .diagram-card.outcome{border-left:3px solid #6F8F8A}
+  .diagram-card.result{border-left:3px solid var(--accent)}
+  .diagram-kicker{
+    font-size:10px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    font-weight:700;
+    margin-bottom:7px;
+  }
+  .diagram-title{
+    font-size:clamp(14px,1.55vw,16px);
+    line-height:1.25;
+    color:var(--ink);
+    font-weight:650;
+    margin-bottom:5px;
+  }
+  .diagram-copy{
+    font-size:clamp(12.5px,1.35vw,14px);
+    line-height:1.38;
+    color:var(--ink-soft);
+  }
+  .diagram-hub{
+    position:relative;
+    border:1px solid rgba(217,119,87,.34);
+    background:linear-gradient(180deg,rgba(217,119,87,.13),rgba(246,241,232,.9));
+    border-radius:8px;
+    padding:18px 18px 16px;
+    min-height:254px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    box-shadow:0 18px 38px rgba(31,30,27,.06);
+  }
+  .diagram-hub .diagram-title{
+    font-family:var(--serif);
+    font-size:clamp(20px,2.35vw,25px);
+    font-weight:600;
+    margin-bottom:10px;
+  }
+  .hub-steps{
+    display:grid;
+    gap:8px;
+    margin-top:14px;
+  }
+  .hub-step{
+    border:1px solid rgba(217,119,87,.24);
+    background:rgba(250,248,243,.7);
+    border-radius:999px;
+    padding:8px 11px;
+    font-size:12px;
+    color:var(--ink);
+    font-weight:650;
+  }
+  .flow-arrow{
+    color:var(--accent-deep);
+    font-family:var(--serif);
+    font-size:30px;
+    line-height:1;
+    text-align:center;
+    opacity:.85;
+  }
+  .diagram-proof{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+    margin-top:18px;
+  }
+  .proof-pill{
+    min-height:68px;
+    border:1px solid var(--line);
+    background:var(--panel-soft);
+    border-radius:8px;
+    padding:12px 13px;
+    overflow-wrap:break-word;
+  }
+  .proof-pill strong{
+    display:block;
+    color:var(--ink);
+    font-size:14px;
+    line-height:1.2;
+    margin-bottom:5px;
+  }
+  .proof-pill span{
+    display:block;
+    color:var(--ink-soft);
+    font-size:12.5px;
+    line-height:1.3;
+  }
+
   /* Title slide */
   .hero{text-align:center}
   .hero .brand{
@@ -277,6 +386,20 @@
   }
   .kbd-hint b{color:var(--ink-soft);font-weight:600}
 
+  @media (max-width:760px){
+    .product-diagram{
+      grid-template-columns:1fr;
+      gap:10px;
+      margin-top:14px;
+    }
+    .diagram-stack{gap:10px}
+    .diagram-card{min-height:auto;padding:13px 14px}
+    .diagram-hub{min-height:auto;padding:16px 14px}
+    .flow-arrow{font-size:22px;transform:rotate(90deg)}
+    .diagram-proof{grid-template-columns:1fr;gap:8px;margin-top:12px}
+    .proof-pill{min-height:auto}
+  }
+
   @media (max-width:640px){
     header{padding:18px 16px 14px}
     nav.dots{gap:9px}
@@ -299,7 +422,7 @@
 
 <footer>
   <button class="ctrl" id="prev" aria-label="Previous slide">‹</button>
-  <div class="counter"><span id="count">01 / 13</span><span class="name" id="cur-name">Title</span></div>
+  <div class="counter"><span id="count">01 / 14</span><span class="name" id="cur-name">Title</span></div>
   <button class="ctrl" id="next" aria-label="Next slide">›</button>
 </footer>
 
@@ -349,7 +472,61 @@ const slides = [
       <p>We land <strong>read-only</strong> (they send exports, we send back the report), then grow into the live control plane.</p>`
   },
   {
-    label:"How It Works", n:"05",
+    label:"Product Map", n:"05",
+    html:`<div class="eyebrow">Product Map</div>
+      <h2>WaferZero joins token spend to verified outcomes.</h2>
+      <p class="lead">The product is the neutral layer between AI activity and the verification systems that already know whether the work mattered.</p>
+      <div class="product-diagram" aria-label="WaferZero product flow diagram">
+        <div class="diagram-stack">
+          <div class="diagram-card source">
+            <div class="diagram-kicker">AI spend</div>
+            <div class="diagram-title">Internal agents</div>
+            <div class="diagram-copy">Failure triage bots, testbench generators, assertion writers.</div>
+          </div>
+          <div class="diagram-card source">
+            <div class="diagram-kicker">Vendor tools</div>
+            <div class="diagram-title">EDA copilots</div>
+            <div class="diagram-copy">Cadence, Synopsys, Siemens, and future agentic flows.</div>
+          </div>
+          <div class="diagram-card outcome">
+            <div class="diagram-kicker">Outcome data</div>
+            <div class="diagram-title">Regression + coverage</div>
+            <div class="diagram-copy">Failures, accepted root causes, passing reruns, coverage movement.</div>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="diagram-hub">
+          <div class="diagram-kicker">WaferZero</div>
+          <div class="diagram-title">The ROI Join</div>
+          <div class="diagram-copy">Match each agent run to the verification result it helped create.</div>
+          <div class="hub-steps">
+            <div class="hub-step">Meter tokens</div>
+            <div class="hub-step">Link outcomes</div>
+            <div class="hub-step">Score value</div>
+          </div>
+        </div>
+        <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+        <div class="diagram-stack">
+          <div class="diagram-card result">
+            <div class="diagram-kicker">Visibility</div>
+            <div class="diagram-title">Agent-level economics</div>
+            <div class="diagram-copy">Person, team, model, tool, workflow, tokens, cost, and accepted result.</div>
+          </div>
+          <div class="diagram-card result">
+            <div class="diagram-kicker">ROI output</div>
+            <div class="diagram-title">Renew, expand, pause</div>
+            <div class="diagram-copy">Which agents create verified silicon, and what each result costs.</div>
+          </div>
+        </div>
+      </div>
+      <div class="diagram-proof">
+        <div class="proof-pill"><strong>$192</strong><span>per accepted root cause</span></div>
+        <div class="proof-pill"><strong>$249</strong><span>per resolved failure</span></div>
+        <div class="proof-pill"><strong>$7,800</strong><span>spent for 4 outcomes: pause</span></div>
+      </div>`
+  },
+  {
+    label:"How It Works", n:"06",
     html:`<div class="eyebrow">How It Works</div>
       <h2>It observes, then it acts, then it learns.</h2>
       <p><strong>Phase 1, the report.</strong> We read exported files and return the cost-per-outcome analysis. Nothing sits in the critical path yet.</p>
@@ -361,7 +538,7 @@ const slides = [
       <p class="emph">The brain decides slowly. The hands act instantly. We can kill a spinning agent loop mid-run, the sharp thing only a layer that's actually in the path can do.</p>`
   },
   {
-    label:"Why Now", n:"06",
+    label:"Why Now", n:"07",
     html:`<div class="eyebrow">Why Now</div>
       <h2>Four things just lined up.</h2>
       <ol class="num">
@@ -372,7 +549,7 @@ const slides = [
       </ol>`
   },
   {
-    label:"Market", n:"07",
+    label:"Market", n:"08",
     html:`<div class="eyebrow">Market</div>
       <h2>A vertical wedge into a category forming now.</h2>
       <ul class="clean">
@@ -383,7 +560,7 @@ const slides = [
       <p class="tbd">Bottom-up market sizing to be finalized: chip teams &times; AI-tooling spend &times; ACV.</p>`
   },
   {
-    label:"Competition & Moat", n:"08",
+    label:"Competition & Moat", n:"09",
     html:`<div class="eyebrow">Competition &amp; Moat</div>
       <h2>Everyone stops at cost. Nobody connects spend to verified value.</h2>
       <table class="grid">
@@ -398,7 +575,7 @@ const slides = [
       <div class="moat"><b>Moat:</b> a cross-customer spend-to-outcome dataset, neutrality across every agent, and eventually a control-plane position in the path.</div>`
   },
   {
-    label:"Business Model & GTM", n:"09",
+    label:"Business Model & GTM", n:"10",
     html:`<div class="eyebrow">Business Model &amp; GTM</div>
       <h2>Land read-only, expand into the path.</h2>
       <ul class="clean">
@@ -410,7 +587,7 @@ const slides = [
       <p class="tbd">Pricing model, sales cycle, and unit-economics hypotheses to be finalized.</p>`
   },
   {
-    label:"Traction & Roadmap", n:"10",
+    label:"Traction & Roadmap", n:"11",
     html:`<div class="eyebrow">Traction, Validation &amp; Roadmap</div>
       <h2>We know exactly what would prove this, and we're inside the room to prove it.</h2>
       <ul class="clean">
@@ -421,7 +598,7 @@ const slides = [
       </ul>`
   },
   {
-    label:"Team", n:"11",
+    label:"Team", n:"12",
     html:`<div class="eyebrow">Team</div>
       <h2>Two verification engineers who lived this problem.</h2>
       <ul class="clean">
@@ -431,7 +608,7 @@ const slides = [
       </ul>`
   },
   {
-    label:"The Ask", n:"12",
+    label:"The Ask", n:"13",
     html:`<div class="eyebrow">The Ask</div>
       <h2>What we're raising, and where this goes.</h2>
       <ul class="clean">

@@ -38,7 +38,7 @@ Falling token prices don't kill the category — usage volume, agent autonomy, c
 ### The unique insight (why *us*, and why it's non-obvious)
 The spend→outcome join is a **race in software** (PRs, tickets, deploys are clean, public, API-first — Harness, Pay-i, Atlassian/DX are already there) but a **frontier in silicon**. In chip verification, "World B" — the outcome data — lives in **proprietary regression databases, coverage tools, and bug trackers**, joined to nothing. It is structurally unclaimed.
 
-Two AMD verification engineers can see what a horizontal founder can't:
+Two career verification engineers can see what a horizontal founder can't:
 - The **outcome that matters** in DV isn't "PR merged" — it's **coverage closure, bugs found, regression pass rate**, and we know how those are recorded and where.
 - **Agentic verification just shipped** (Cadence, Synopsys, Siemens, all 2026), so DV token spend is inflecting *right now* — and nobody is measuring whether an overnight agent run that burned $9K closed coverage, found a bug, or looped on the same failing seed 400× producing nothing.
 
@@ -52,7 +52,7 @@ Inaction feels free; make it visibly expensive. Four parts: **(1)** 20–40% dir
 - A DV manager, shown token-cost-per-coverage-point per agent/team, **shrugs** and reallocates nothing → it's a vitamin. **This is the single most important thing to validate with a real DV leader.**
 - Outcome data is **too noisy** to attribute a coverage gain to one agent run.
 
-**Still to nail down:** the exact firsthand anecdote (sanitized, no AMD IP) that makes the "value-blind agent run" real for an investor; one credible dollar figure for current DV AI spend at a representative team.
+**Still to nail down:** the exact firsthand anecdote (sanitized) that makes the "value-blind agent run" real for an investor; one credible dollar figure for current DV AI spend at a representative team.
 
 ---
 
@@ -190,7 +190,7 @@ Causation-difficulty buys ~1–2 years of lead; we must *spend* it building dura
 | **Market narrow / slow / secure** | Fewer buyers than software, long procurement, high security sensitivity. | Land-and-expand within large orgs; read-only pilots to lower the security bar. |
 | **Buyer prefers internal tooling** | Big chip cos can build analytics. | Target mid-market first; win on neutral cross-vendor benchmarks they can't self-generate. |
 | **Token prices fall** | Thesis needs volume/complexity to outrun price. | 30× variance + agentic growth + volume already outpace unit-price declines. |
-| **Founder employment / IP (first-order)** | Both founders are at AMD. | **No AMD code, logs, architectures, confidential metrics, or employer-resourced work.** Independent legal review of employment/IP/outside-activity terms before building. Build only on public knowledge + design-partner data under NDA. |
+| **Founder IP hygiene (first-order)** | Standard for founders coming out of industry roles. | **Build only on public knowledge and design-partner data under NDA; no third-party code, logs, architectures, or confidential data.** Independent legal review of any employment/IP/outside-activity obligations before building. |
 
 ---
 
@@ -200,7 +200,7 @@ Causation-difficulty buys ~1–2 years of lead; we must *spend* it building dura
 - **What problem?** Chip teams are deploying AI across verification but can't tell which spend creates accepted outcomes — so they can't rationally renew, expand, or cut.
 - **Initial customer & wedge?** VP/Director of Verification at small/mid fabless, IP, and design-service firms; wedge = read-only cost-per-accepted-outcome report for regression-triage.
 - **Why now?** Enterprise AI in production ($37B, 3.2×), agentic spend is volatile/value-blind (30× variance), and agentic verification just shipped from every EDA major in 2026.
-- **Why us?** Two AMD verification engineers — we know the outcome that matters and where it lives; we see the frontier a horizontal founder can't.
+- **Why us?** Two career verification engineers — we know the outcome that matters and where it lives; we see the frontier a horizontal founder can't.
 - **Biggest risk?** That DV AI spend isn't yet big enough to be a budget-level pain — which is exactly what our validation program tests first.
 - **What we're raising / use of funds?** *(Gurinder owns the number.)* Keep the answer: fund the validation program + first connectors + one anchor design partner to the "materially changes a renewal decision" signal.
 
@@ -220,10 +220,10 @@ Causation-difficulty buys ~1–2 years of lead; we must *spend* it building dura
 > Caveat: vendor pages describe intended capabilities, not independently verified customer results. Funding/product facts reflect public info as of July 2026.
 
 ## Appendix B — Open validation items (Usman's to-do)
-1. One sanitized firsthand anecdote of a value-blind agent run (no AMD IP).
+1. One sanitized firsthand anecdote of a value-blind agent run.
 2. A credible current DV AI-spend figure from a representative team.
 3. First ~10 named target accounts + warm intros.
 4. One anchor read-only design partner committed; NDA/data-handling template ready.
 5. Smallest honest join that yields a credible cost-per-accepted-outcome.
 6. Competitive sweep: confirm no stealth "vertical AI ROI for chip verification" player.
-7. Independent legal review of AMD employment/IP obligations before any build.
+7. Independent legal review of any employment/IP obligations before any build.

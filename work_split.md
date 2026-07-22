@@ -79,7 +79,7 @@ Own:
 * Equity split and decision-making.
 * Full-time transition plans.
 * Missing capabilities and hiring needs.
-* AMD employment, IP, and conflict considerations.
+* Employment, IP, and conflict considerations.
 
 3. Customer and Beachhead Market
 

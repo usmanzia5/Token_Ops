@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>WaferZero — Pitch Deck</title>
-<meta name="description" content="WaferZero — the economic layer for AI in chip verification." />
+<title>WaferZero Pitch Deck</title>
+<meta name="description" content="WaferZero. The economic layer for AI in chip verification." />
 <style>
   :root{
     --bg:#FAF8F3;
@@ -32,7 +32,7 @@
     overflow:hidden;
   }
 
-  /* ---------- Header ---------- */
+  /* Header */
   header{
     flex:0 0 auto;
     padding:26px 24px 18px;
@@ -60,7 +60,7 @@
     font-weight:500;
   }
 
-  /* ---------- Nav dots ---------- */
+  /* Nav dots */
   nav.dots{
     margin-top:16px;
     display:flex;
@@ -98,7 +98,7 @@
   }
   .dot-btn:hover .tip{opacity:1;transform:translateX(-50%) translateY(0)}
 
-  /* ---------- Stage ---------- */
+  /* Stage */
   main{
     flex:1 1 auto;
     position:relative;
@@ -252,7 +252,7 @@
     font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;
   }
 
-  /* ---------- Footer controls ---------- */
+  /* Footer controls */
   footer{
     flex:0 0 auto;
     display:flex;align-items:center;justify-content:center;gap:22px;
@@ -322,15 +322,15 @@ const slides = [
       <h2>Companies are scaling their fastest-growing cost with their eyes closed.</h2>
       <p class="lead">AI spend is now the fastest-growing, highest-variance line in engineering.</p>
       <p>Teams can't tell value from waste, so they either let it run or cap their best work with a blind budget.</p>
-      <p>The same agent task can cost <strong>30&times; more</strong> from one run to the next &mdash; and the expensive runs are often the <em>worse</em> ones.</p>
+      <p>The same agent task can cost <strong>30&times; more</strong> from one run to the next, and the expensive runs are often the <em>worse</em> ones.</p>
       <p class="emph">The problem isn't that AI costs too much. It's that management can't decide where to cut and where to invest.</p>`
   },
   {
     label:"The Insight", n:"03",
-    html:`<div class="eyebrow">The Insight &mdash; why us, why now</div>
+    html:`<div class="eyebrow">The Insight: why us, why now</div>
       <h2>In software this is a race. In silicon it's open ground.</h2>
-      <p>Tying AI spend to output in software &mdash; pull requests, tickets, deploys &mdash; is getting solved. That data is clean, public, and API-first.</p>
-      <p>In chip verification, the outcomes that matter &mdash; <strong>coverage, bugs, regression health</strong> &mdash; sit inside proprietary EDA tools, connected to nothing.</p>
+      <p>Tying AI spend to output in software (pull requests, tickets, deploys) is getting solved. That data is clean, public, and API-first.</p>
+      <p>In chip verification, the outcomes that matter (<strong>coverage, bugs, regression health</strong>) sit inside proprietary EDA tools, connected to nothing.</p>
       <p>Nobody has claimed it. And we've spent our careers inside it.</p>
       <p class="emph">&ldquo;The outcome data lives in tools nobody has connected yet. That's the whole opportunity.&rdquo;</p>`
   },
@@ -340,25 +340,25 @@ const slides = [
       <h2>A cost-per-verified-outcome report for chip teams.</h2>
       <p class="lead">WaferZero sits next to a verification team and reads two things they already have:</p>
       <ul class="clean">
-        <li><strong>Their AI usage and billing</strong> &mdash; which agents ran, how many tokens, what it cost.</li>
-        <li><strong>Their verification results</strong> &mdash; which regressions failed, which root causes engineers accepted, which reruns passed, how coverage moved.</li>
+        <li><strong>Their AI usage and billing:</strong> which agents ran, how many tokens, what it cost.</li>
+        <li><strong>Their verification results:</strong> which regressions failed, which root causes engineers accepted, which reruns passed, how coverage moved.</li>
       </ul>
       <p>It matches them up and answers one question they can't answer today: <strong>what did each verified result actually cost, and which agents are worth the money?</strong></p>
       <div class="callout"><div class="k">What you'd see on screen</div>
-        <p>&ldquo;The triage assistant burned $18,400 last quarter and produced 96 accepted root causes and 74 passing reruns &mdash; $192 per accepted root cause. A second workflow spent $7,800 for 4 outcomes. Pause it.&rdquo;</p></div>
+        <p>&ldquo;The triage assistant burned $18,400 last quarter and produced 96 accepted root causes and 74 passing reruns. That's $192 per accepted root cause. A second workflow spent $7,800 for 4 outcomes. Pause it.&rdquo;</p></div>
       <p>We land <strong>read-only</strong> (they send exports, we send back the report), then grow into the live control plane.</p>`
   },
   {
     label:"How It Works", n:"05",
     html:`<div class="eyebrow">How It Works</div>
       <h2>It observes, then it acts, then it learns.</h2>
-      <p><strong>Phase 1 &mdash; the report:</strong> we read exported files and return the cost-per-outcome analysis. Nothing sits in the critical path yet.</p>
-      <p><strong>Phase 2 &mdash; the control plane:</strong> every agent call flows through our gateway, so now we can <em>act</em>, not just report. Two pieces at two speeds:</p>
+      <p><strong>Phase 1, the report.</strong> We read exported files and return the cost-per-outcome analysis. Nothing sits in the critical path yet.</p>
+      <p><strong>Phase 2, the control plane.</strong> Every agent call flows through our gateway, so now we can <em>act</em>, not just report. Two pieces at two speeds:</p>
       <ul class="clean">
         <li><strong>The hands (fast):</strong> a lightweight gateway that meters every call and enforces decisions in microseconds.</li>
         <li><strong>The brain (slow is fine):</strong> an LLM-as-judge plus the <strong>Value Bank</strong>, which learns which agents turn tokens into coverage.</li>
       </ul>
-      <p class="emph">The brain decides slowly. The hands act instantly. We can kill a spinning agent loop mid-run &mdash; the sharp thing only a layer that's actually in the path can do.</p>`
+      <p class="emph">The brain decides slowly. The hands act instantly. We can kill a spinning agent loop mid-run, the sharp thing only a layer that's actually in the path can do.</p>`
   },
   {
     label:"Why Now", n:"06",
@@ -366,8 +366,8 @@ const slides = [
       <h2>Four things just lined up.</h2>
       <ol class="num">
         <li><strong>Enterprise AI hit real production budgets.</strong> Enterprise generative-AI spend reached $37B in 2025, roughly triple the year before (Menlo Ventures). 98% of FinOps teams now manage AI spend, up from 31% two years ago.</li>
-        <li><strong>The #1 unmet need is exactly ours.</strong> The most-requested capability in the State of FinOps 2026 survey is granular monitoring of AI spend against tokens and requests &mdash; and off-the-shelf tools haven't delivered it. 73% of AI projects still blow their budget.</li>
-        <li><strong>Agentic spend is volatile and value-blind.</strong> Up to 30&times; variance on the same task &mdash; so you can't fix it with cheaper tokens.</li>
+        <li><strong>The number-one unmet need is exactly ours.</strong> The most-requested capability in the State of FinOps 2026 survey is granular monitoring of AI spend against tokens and requests, and off-the-shelf tools haven't delivered it. 73% of AI projects still blow their budget.</li>
+        <li><strong>Agentic spend is volatile and value-blind.</strong> Up to 30&times; variance on the same task, so you can't fix it with cheaper tokens.</li>
         <li><strong>Agentic verification just shipped, in 2026.</strong> Cadence pushed ChipStack to Level-5 autonomy at Computex; Synopsys launched AgentEngineer; Siemens shipped Fuse EDA.</li>
       </ol>`
   },
@@ -377,10 +377,10 @@ const slides = [
       <h2>A vertical wedge into a category forming now.</h2>
       <ul class="clean">
         <li><strong>Beachhead:</strong> design-verification teams at fabless, IP, and design-service companies.</li>
-        <li><strong>Expand:</strong> all of verification &rarr; the economic layer for AI across complex engineering (physical AI, aerospace).</li>
+        <li><strong>Expand:</strong> all of verification, then the economic layer for AI across complex engineering (physical AI, aerospace).</li>
         <li><strong>Anchor:</strong> enterprise GenAI spend $37B in 2025 and tripling; AI ROI tooling is a net-new budget line.</li>
       </ul>
-      <p class="tbd">TAM / SAM / SOM &mdash; bottom-up sizing (# chip teams &times; AI-tooling spend &times; ACV) to be finalized.</p>`
+      <p class="tbd">Bottom-up market sizing to be finalized: chip teams &times; AI-tooling spend &times; ACV.</p>`
   },
   {
     label:"Competition & Moat", n:"08",
@@ -392,7 +392,7 @@ const slides = [
           <tr><td>Horizontal ROI (Harness, Pay-i)</td><td>Built for pull requests and tickets. No concept of coverage or regression health.</td></tr>
           <tr><td>FinOps (CloudZero, Finout)</td><td>The customer has to define the metric. No verification ontology.</td></tr>
           <tr><td>Gateways &amp; observability</td><td>They meter, they don't judge value. We sit on top of them.</td></tr>
-          <tr><td>EDA incumbents (Cadence, Synopsys, Siemens)</td><td>A conflicted meter &mdash; they profit from more agent usage, and only measure their own agents.</td></tr>
+          <tr><td>EDA incumbents (Cadence, Synopsys, Siemens)</td><td>A conflicted meter: they profit from more agent usage, and only measure their own agents.</td></tr>
         </tbody>
       </table>
       <div class="moat"><b>Moat:</b> a cross-customer spend-to-outcome dataset, neutrality across every agent, and eventually a control-plane position in the path.</div>`
@@ -402,8 +402,8 @@ const slides = [
     html:`<div class="eyebrow">Business Model &amp; GTM</div>
       <h2>Land read-only, expand into the path.</h2>
       <ul class="clean">
-        <li><strong>Sell to:</strong> VP / Director of Verification. Engineering trusts the outcome metric before finance trusts the ROI.</li>
-        <li><strong>Motion:</strong> founder-led &rarr; read-only pilot &rarr; paid deployment &rarr; control-plane expansion.</li>
+        <li><strong>Sell to:</strong> VP or Director of Verification. Engineering trusts the outcome metric before finance trusts the ROI.</li>
+        <li><strong>Motion:</strong> founder-led, then a read-only pilot, then paid deployment, then control-plane expansion.</li>
         <li><strong>Pricing hypothesis:</strong> platform subscription, expanding as we sit in more of the agent path.</li>
         <li><strong>Beachhead accounts:</strong> mid-market fabless, IP, and design-service (faster pilots, less internal tooling).</li>
       </ul>
@@ -412,12 +412,12 @@ const slides = [
   {
     label:"Traction & Roadmap", n:"10",
     html:`<div class="eyebrow">Traction, Validation &amp; Roadmap</div>
-      <h2>We know exactly what would prove this &mdash; and we're inside the room to prove it.</h2>
+      <h2>We know exactly what would prove this, and we're inside the room to prove it.</h2>
       <ul class="clean">
         <li><strong>Founder-market fit:</strong> verification engineers with direct network access to the buyer.</li>
-        <li><strong>Validation program:</strong> 15&ndash;20 structured discovery interviews, then one anchor read-only design partner.</li>
+        <li><strong>Validation program:</strong> 15 to 20 structured discovery interviews, then one anchor read-only design partner.</li>
         <li><strong>The only signal that counts:</strong> &ldquo;Your report would change whether we renew or expand this AI tool.&rdquo;</li>
-        <li><strong>Roadmap:</strong> discovery &rarr; read-only report &rarr; first connectors &rarr; control-plane pilot.</li>
+        <li><strong>Roadmap:</strong> discovery, then read-only report, then first connectors, then control-plane pilot.</li>
       </ul>`
   },
   {
@@ -425,32 +425,32 @@ const slides = [
     html:`<div class="eyebrow">Team</div>
       <h2>Two verification engineers who lived this problem.</h2>
       <ul class="clean">
-        <li><strong>Usman</strong> &mdash; co-founder. Product, technical thesis, and market insight.</li>
-        <li><strong>Gurinder</strong> &mdash; co-founder. Commercial strategy and company building.</li>
+        <li><strong>Usman</strong>, co-founder. Product, technical thesis, and market insight.</li>
+        <li><strong>Gurinder</strong>, co-founder. Commercial strategy and company building.</li>
         <li><strong>Unfair advantage:</strong> we know the workflow, the outcome that matters, the systems it lives in, and the buyer.</li>
       </ul>`
   },
   {
     label:"The Ask", n:"12",
     html:`<div class="eyebrow">The Ask</div>
-      <h2>What we're raising &mdash; and where this goes.</h2>
+      <h2>What we're raising, and where this goes.</h2>
       <ul class="clean">
         <li><strong>Raising:</strong> pre-seed on a SAFE, aligned to the round's target check size.</li>
-        <li><strong>Use of funds:</strong> ~12&ndash;18 months &mdash; convert design partners to paid pilots, build the first connectors, first technical hire.</li>
+        <li><strong>Use of funds:</strong> roughly 12 to 18 months, to convert design partners into paid pilots, build the first connectors, and make our first technical hire.</li>
         <li><strong>Milestone this buys:</strong> a design partner whose renewal decision our report changes.</li>
       </ul>
-      <p class="emph">Vision: become the economic measurement layer for AI in complex engineering &mdash; starting with the silicon nobody else can measure.</p>`
+      <p class="emph">Vision: become the economic measurement layer for AI in complex engineering, starting with the silicon nobody else can measure.</p>`
   },
   {
-    label:"Appendix — Risks", n:"A1", sep:true,
-    html:`<div class="eyebrow">Appendix &mdash; Risks &amp; Mitigations</div>
+    label:"Appendix: Risks", n:"A1", sep:true,
+    html:`<div class="eyebrow">Appendix: Risks &amp; Mitigations</div>
       <h2>We'd rather map the failure modes than have you find them.</h2>
       <table class="grid">
         <thead><tr><th>Risk</th><th>Our answer</th></tr></thead>
         <tbody>
           <tr><td>DV token spend not yet material</td><td>The validation program tests this first. Land where agentic DV is already live.</td></tr>
-          <tr><td>EDA telemetry is closed</td><td>Ingest through several modes (billing APIs, OpenTelemetry, local collectors). Target internal &amp; customer-owned agents.</td></tr>
-          <tr><td>A horizontal adds a connector</td><td>We win on depth of the outcome model, neutrality, and the dataset &mdash; not on being a logo in a menu.</td></tr>
+          <tr><td>EDA telemetry is closed</td><td>Ingest through several modes (billing APIs, OpenTelemetry, local collectors). Target internal and customer-owned agents.</td></tr>
+          <tr><td>A horizontal adds a connector</td><td>We win on depth of the outcome model, neutrality, and the dataset, not on being a logo in a menu.</td></tr>
           <tr><td>An incumbent builds it</td><td>They're a conflicted meter. We're neutral across every agent.</td></tr>
           <tr><td>Attribution isn't causation</td><td>Label metrics precisely (attributed, assisted, accepted, correlated). Honest correlation beats today's zero.</td></tr>
         </tbody>
@@ -458,7 +458,7 @@ const slides = [
   }
 ];
 
-// ---------- Render ----------
+// Render
 const stage = document.getElementById('stage');
 const dotsWrap = document.getElementById('dots');
 const countEl = document.getElementById('count');

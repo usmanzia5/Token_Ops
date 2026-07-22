@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>WaferZero — Pitch Deck</title>
+<meta name="description" content="WaferZero — the economic layer for AI in chip verification." />
+<style>
+  :root{
+    --bg:#FAF8F3;
+    --panel:#F2ECE0;
+    --panel-soft:#F6F1E8;
+    --ink:#1F1E1B;
+    --ink-soft:#6B6357;
+    --ink-faint:#9C9384;
+    --accent:#D97757;
+    --accent-deep:#C15F3C;
+    --line:#E7E0D2;
+    --line-strong:#DAD1BF;
+    --serif:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,'Times New Roman',serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    flex:0 0 auto;
+    padding:26px 24px 18px;
+    text-align:center;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,var(--bg),rgba(250,248,243,0.6));
+  }
+  .wordmark{
+    font-family:var(--serif);
+    font-size:22px;
+    letter-spacing:.2px;
+    font-weight:600;
+    color:var(--ink);
+    user-select:none;
+  }
+  .wordmark .dot{color:var(--accent)}
+  .wordmark .sub{
+    display:block;
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    margin-top:5px;
+    font-weight:500;
+  }
+
+  /* ---------- Nav dots ---------- */
+  nav.dots{
+    margin-top:16px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:11px;
+    flex-wrap:wrap;
+  }
+  .dot-btn{
+    position:relative;
+    width:12px;height:12px;
+    border-radius:50%;
+    border:1.5px solid var(--line-strong);
+    background:transparent;
+    cursor:pointer;
+    padding:0;
+    transition:transform .18s ease,background .18s ease,border-color .18s ease;
+  }
+  .dot-btn:hover{border-color:var(--accent);transform:scale(1.25)}
+  .dot-btn.active{background:var(--accent);border-color:var(--accent);transform:scale(1.15)}
+  .dot-btn.sep{margin-left:16px;position:relative}
+  .dot-btn.sep::before{
+    content:"";
+    position:absolute;left:-9px;top:50%;
+    width:1px;height:14px;transform:translateY(-50%);
+    background:var(--line-strong);
+  }
+  .dot-btn .tip{
+    position:absolute;top:22px;left:50%;transform:translateX(-50%) translateY(4px);
+    background:var(--ink);color:#fff;
+    font-size:11px;line-height:1;letter-spacing:.02em;
+    padding:6px 8px;border-radius:6px;white-space:nowrap;
+    opacity:0;pointer-events:none;transition:opacity .15s ease,transform .15s ease;
+    z-index:20;
+  }
+  .dot-btn:hover .tip{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* ---------- Stage ---------- */
+  main{
+    flex:1 1 auto;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    overflow:hidden;
+  }
+  .slide{
+    position:absolute;
+    width:100%;
+    max-width:860px;
+    padding:0 8px;
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .45s ease,transform .45s ease;
+    pointer-events:none;
+    max-height:100%;
+    overflow-y:auto;
+  }
+  .slide.active{opacity:1;transform:translateY(0);pointer-events:auto}
+
+  .eyebrow{
+    font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent-deep);font-weight:600;margin-bottom:18px;
+  }
+  .slide h1{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(30px,4.6vw,50px);
+    line-height:1.08;
+    letter-spacing:-.01em;
+    margin-bottom:22px;
+  }
+  .slide h2{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(26px,3.8vw,40px);
+    line-height:1.14;
+    letter-spacing:-.01em;
+    margin-bottom:26px;
+  }
+  .slide p{
+    font-size:clamp(16px,1.9vw,19px);
+    line-height:1.62;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+    max-width:66ch;
+  }
+  .slide p strong{color:var(--ink);font-weight:600}
+  .lead{color:var(--ink) !important;font-size:clamp(17px,2vw,20px) !important}
+
+  .emph{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--ink) !important;
+    font-size:clamp(18px,2.2vw,23px) !important;
+    line-height:1.4;
+    margin-top:22px;
+    padding-left:20px;
+    border-left:3px solid var(--accent);
+  }
+
+  ul.clean{list-style:none;margin:8px 0 4px}
+  ul.clean li{
+    position:relative;
+    padding-left:26px;
+    font-size:clamp(15.5px,1.8vw,18px);
+    line-height:1.55;
+    color:var(--ink-soft);
+    margin-bottom:15px;
+    max-width:64ch;
+  }
+  ul.clean li strong{color:var(--ink)}
+  ul.clean li::before{
+    content:"";
+    position:absolute;left:2px;top:11px;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--accent);
+  }
+
+  ol.num{list-style:none;counter-reset:n;margin:10px 0}
+  ol.num li{
+    position:relative;counter-increment:n;
+    padding-left:44px;margin-bottom:18px;
+    font-size:clamp(15.5px,1.8vw,18px);line-height:1.5;color:var(--ink-soft);
+    max-width:66ch;
+  }
+  ol.num li strong{color:var(--ink)}
+  ol.num li::before{
+    content:counter(n);
+    position:absolute;left:0;top:-2px;
+    width:28px;height:28px;border-radius:50%;
+    background:var(--panel);color:var(--accent-deep);
+    border:1px solid var(--line-strong);
+    font-family:var(--serif);font-size:15px;font-weight:600;
+    display:flex;align-items:center;justify-content:center;
+  }
+
+  .callout{
+    background:var(--panel-soft);
+    border:1px solid var(--line);
+    border-left:3px solid var(--accent);
+    border-radius:10px;
+    padding:20px 22px;
+    margin:22px 0 8px;
+  }
+  .callout .k{
+    font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);font-weight:600;margin-bottom:10px;
+  }
+  .callout p{font-family:var(--serif);font-style:italic;color:var(--ink);font-size:clamp(16px,1.9vw,19px);line-height:1.5;margin:0}
+
+  table.grid{border-collapse:collapse;width:100%;margin:14px 0 6px;font-size:clamp(13.5px,1.5vw,15.5px)}
+  table.grid th,table.grid td{
+    text-align:left;padding:13px 16px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45;
+  }
+  table.grid th{
+    color:var(--ink);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;
+    border-bottom:1.5px solid var(--line-strong);
+  }
+  table.grid td:first-child{color:var(--ink);font-weight:600;width:38%}
+  table.grid td:last-child{color:var(--ink-soft)}
+  table.grid tr:last-child td{border-bottom:none}
+
+  .moat{
+    margin-top:20px;padding:16px 20px;border-radius:10px;
+    background:linear-gradient(180deg,rgba(217,119,87,0.08),rgba(217,119,87,0.03));
+    border:1px solid rgba(217,119,87,0.25);
+    font-size:clamp(15px,1.7vw,17px);line-height:1.5;color:var(--ink);
+  }
+  .moat b{color:var(--accent-deep)}
+  .tbd{color:var(--ink-faint);font-style:italic;font-size:14px}
+
+  /* Title slide */
+  .hero{text-align:center}
+  .hero .brand{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(46px,8vw,86px);line-height:1;letter-spacing:-.02em;margin-bottom:20px;
+  }
+  .hero .brand .dot{color:var(--accent)}
+  .hero .tag{
+    font-family:var(--serif);font-size:clamp(20px,2.8vw,30px);color:var(--ink);
+    line-height:1.25;margin-bottom:22px;font-weight:500;
+  }
+  .hero .oneliner{
+    font-size:clamp(15px,1.8vw,18px);color:var(--ink-soft);max-width:60ch;margin:0 auto 30px;line-height:1.6;
+  }
+  .hero .meta{
+    font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;
+  }
+
+  /* ---------- Footer controls ---------- */
+  footer{
+    flex:0 0 auto;
+    display:flex;align-items:center;justify-content:center;gap:22px;
+    padding:16px 24px 22px;
+  }
+  .ctrl{
+    width:40px;height:40px;border-radius:50%;
+    border:1px solid var(--line-strong);background:transparent;color:var(--ink-soft);
+    font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:all .16s ease;
+  }
+  .ctrl:hover{border-color:var(--accent);color:var(--accent-deep);background:var(--panel-soft)}
+  .counter{
+    font-variant-numeric:tabular-nums;font-size:13px;letter-spacing:.14em;color:var(--ink-faint);
+    min-width:96px;text-align:center;font-weight:600;
+  }
+  .counter .name{display:block;text-transform:none;letter-spacing:.01em;color:var(--ink-soft);font-size:12px;margin-top:3px;font-weight:500}
+
+  .kbd-hint{
+    position:fixed;left:20px;bottom:22px;z-index:10;
+    font-size:11.5px;color:var(--ink-faint);letter-spacing:.02em;
+  }
+  .kbd-hint b{color:var(--ink-soft);font-weight:600}
+
+  @media (max-width:640px){
+    header{padding:18px 16px 14px}
+    nav.dots{gap:9px}
+    .kbd-hint{display:none}
+    .slide{padding:0}
+    table.grid td:first-child{width:auto}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wordmark">WaferZero<span class="dot">.</span>
+    <span class="sub">The economic layer for AI in chip verification</span>
+  </div>
+  <nav class="dots" id="dots" aria-label="Slide navigation"></nav>
+</header>
+
+<main id="stage"></main>
+
+<footer>
+  <button class="ctrl" id="prev" aria-label="Previous slide">‹</button>
+  <div class="counter"><span id="count">01 / 13</span><span class="name" id="cur-name">Title</span></div>
+  <button class="ctrl" id="next" aria-label="Next slide">›</button>
+</footer>
+
+<div class="kbd-hint">Use <b>←</b> <b>→</b> to move between slides</div>
+
+<script>
+const slides = [
+  {
+    label:"Title", n:"01",
+    html:`<div class="hero">
+      <div class="brand">WaferZero<span class="dot">.</span></div>
+      <div class="tag">The economic layer for AI in chip verification.</div>
+      <div class="oneliner">We connect AI spend to verified engineering outcomes, so chip teams can finally see which AI tools produce verified silicon and what each result actually costs.</div>
+      <div class="meta">Pre-seed</div>
+    </div>`
+  },
+  {
+    label:"Problem", n:"02",
+    html:`<div class="eyebrow">The Problem</div>
+      <h2>Companies are scaling their fastest-growing cost with their eyes closed.</h2>
+      <p class="lead">AI spend is now the fastest-growing, highest-variance line in engineering.</p>
+      <p>Teams can't tell value from waste, so they either let it run or cap their best work with a blind budget.</p>
+      <p>The same agent task can cost <strong>30&times; more</strong> from one run to the next &mdash; and the expensive runs are often the <em>worse</em> ones.</p>
+      <p class="emph">The problem isn't that AI costs too much. It's that management can't decide where to cut and where to invest.</p>`
+  },
+  {
+    label:"The Insight", n:"03",
+    html:`<div class="eyebrow">The Insight &mdash; why us, why now</div>
+      <h2>In software this is a race. In silicon it's open ground.</h2>
+      <p>Tying AI spend to output in software &mdash; pull requests, tickets, deploys &mdash; is getting solved. That data is clean, public, and API-first.</p>
+      <p>In chip verification, the outcomes that matter &mdash; <strong>coverage, bugs, regression health</strong> &mdash; sit inside proprietary EDA tools, connected to nothing.</p>
+      <p>Nobody has claimed it. And we've spent our careers inside it.</p>
+      <p class="emph">&ldquo;The outcome data lives in tools nobody has connected yet. That's the whole opportunity.&rdquo;</p>`
+  },
+  {
+    label:"Solution", n:"04",
+    html:`<div class="eyebrow">Solution / Product</div>
+      <h2>A cost-per-verified-outcome report for chip teams.</h2>
+      <p class="lead">WaferZero sits next to a verification team and reads two things they already have:</p>
+      <ul class="clean">
+        <li><strong>Their AI usage and billing</strong> &mdash; which agents ran, how many tokens, what it cost.</li>
+        <li><strong>Their verification results</strong> &mdash; which regressions failed, which root causes engineers accepted, which reruns passed, how coverage moved.</li>
+      </ul>
+      <p>It matches them up and answers one question they can't answer today: <strong>what did each verified result actually cost, and which agents are worth the money?</strong></p>
+      <div class="callout"><div class="k">What you'd see on screen</div>
+        <p>&ldquo;The triage assistant burned $18,400 last quarter and produced 96 accepted root causes and 74 passing reruns &mdash; $192 per accepted root cause. A second workflow spent $7,800 for 4 outcomes. Pause it.&rdquo;</p></div>
+      <p>We land <strong>read-only</strong> (they send exports, we send back the report), then grow into the live control plane.</p>`
+  },
+  {
+    label:"How It Works", n:"05",
+    html:`<div class="eyebrow">How It Works</div>
+      <h2>It observes, then it acts, then it learns.</h2>
+      <p><strong>Phase 1 &mdash; the report:</strong> we read exported files and return the cost-per-outcome analysis. Nothing sits in the critical path yet.</p>
+      <p><strong>Phase 2 &mdash; the control plane:</strong> every agent call flows through our gateway, so now we can <em>act</em>, not just report. Two pieces at two speeds:</p>
+      <ul class="clean">
+        <li><strong>The hands (fast):</strong> a lightweight gateway that meters every call and enforces decisions in microseconds.</li>
+        <li><strong>The brain (slow is fine):</strong> an LLM-as-judge plus the <strong>Value Bank</strong>, which learns which agents turn tokens into coverage.</li>
+      </ul>
+      <p class="emph">The brain decides slowly. The hands act instantly. We can kill a spinning agent loop mid-run &mdash; the sharp thing only a layer that's actually in the path can do.</p>`
+  },
+  {
+    label:"Why Now", n:"06",
+    html:`<div class="eyebrow">Why Now</div>
+      <h2>Four things just lined up.</h2>
+      <ol class="num">
+        <li><strong>Enterprise AI hit real production budgets.</strong> Enterprise generative-AI spend reached $37B in 2025, roughly triple the year before (Menlo Ventures). 98% of FinOps teams now manage AI spend, up from 31% two years ago.</li>
+        <li><strong>The #1 unmet need is exactly ours.</strong> The most-requested capability in the State of FinOps 2026 survey is granular monitoring of AI spend against tokens and requests &mdash; and off-the-shelf tools haven't delivered it. 73% of AI projects still blow their budget.</li>
+        <li><strong>Agentic spend is volatile and value-blind.</strong> Up to 30&times; variance on the same task &mdash; so you can't fix it with cheaper tokens.</li>
+        <li><strong>Agentic verification just shipped, in 2026.</strong> Cadence pushed ChipStack to Level-5 autonomy at Computex; Synopsys launched AgentEngineer; Siemens shipped Fuse EDA.</li>
+      </ol>`
+  },
+  {
+    label:"Market", n:"07",
+    html:`<div class="eyebrow">Market</div>
+      <h2>A vertical wedge into a category forming now.</h2>
+      <ul class="clean">
+        <li><strong>Beachhead:</strong> design-verification teams at fabless, IP, and design-service companies.</li>
+        <li><strong>Expand:</strong> all of verification &rarr; the economic layer for AI across complex engineering (physical AI, aerospace).</li>
+        <li><strong>Anchor:</strong> enterprise GenAI spend $37B in 2025 and tripling; AI ROI tooling is a net-new budget line.</li>
+      </ul>
+      <p class="tbd">TAM / SAM / SOM &mdash; bottom-up sizing (# chip teams &times; AI-tooling spend &times; ACV) to be finalized.</p>`
+  },
+  {
+    label:"Competition & Moat", n:"08",
+    html:`<div class="eyebrow">Competition &amp; Moat</div>
+      <h2>Everyone stops at cost. Nobody connects spend to verified value.</h2>
+      <table class="grid">
+        <thead><tr><th>Who</th><th>Why they can't just do this</th></tr></thead>
+        <tbody>
+          <tr><td>Horizontal ROI (Harness, Pay-i)</td><td>Built for pull requests and tickets. No concept of coverage or regression health.</td></tr>
+          <tr><td>FinOps (CloudZero, Finout)</td><td>The customer has to define the metric. No verification ontology.</td></tr>
+          <tr><td>Gateways &amp; observability</td><td>They meter, they don't judge value. We sit on top of them.</td></tr>
+          <tr><td>EDA incumbents (Cadence, Synopsys, Siemens)</td><td>A conflicted meter &mdash; they profit from more agent usage, and only measure their own agents.</td></tr>
+        </tbody>
+      </table>
+      <div class="moat"><b>Moat:</b> a cross-customer spend-to-outcome dataset, neutrality across every agent, and eventually a control-plane position in the path.</div>`
+  },
+  {
+    label:"Business Model & GTM", n:"09",
+    html:`<div class="eyebrow">Business Model &amp; GTM</div>
+      <h2>Land read-only, expand into the path.</h2>
+      <ul class="clean">
+        <li><strong>Sell to:</strong> VP / Director of Verification. Engineering trusts the outcome metric before finance trusts the ROI.</li>
+        <li><strong>Motion:</strong> founder-led &rarr; read-only pilot &rarr; paid deployment &rarr; control-plane expansion.</li>
+        <li><strong>Pricing hypothesis:</strong> platform subscription, expanding as we sit in more of the agent path.</li>
+        <li><strong>Beachhead accounts:</strong> mid-market fabless, IP, and design-service (faster pilots, less internal tooling).</li>
+      </ul>
+      <p class="tbd">Pricing model, sales cycle, and unit-economics hypotheses to be finalized.</p>`
+  },
+  {
+    label:"Traction & Roadmap", n:"10",
+    html:`<div class="eyebrow">Traction, Validation &amp; Roadmap</div>
+      <h2>We know exactly what would prove this &mdash; and we're inside the room to prove it.</h2>
+      <ul class="clean">
+        <li><strong>Founder-market fit:</strong> verification engineers with direct network access to the buyer.</li>
+        <li><strong>Validation program:</strong> 15&ndash;20 structured discovery interviews, then one anchor read-only design partner.</li>
+        <li><strong>The only signal that counts:</strong> &ldquo;Your report would change whether we renew or expand this AI tool.&rdquo;</li>
+        <li><strong>Roadmap:</strong> discovery &rarr; read-only report &rarr; first connectors &rarr; control-plane pilot.</li>
+      </ul>`
+  },
+  {
+    label:"Team", n:"11",
+    html:`<div class="eyebrow">Team</div>
+      <h2>Two verification engineers who lived this problem.</h2>
+      <ul class="clean">
+        <li><strong>Usman</strong> &mdash; co-founder. Product, technical thesis, and market insight.</li>
+        <li><strong>Gurinder</strong> &mdash; co-founder. Commercial strategy and company building.</li>
+        <li><strong>Unfair advantage:</strong> we know the workflow, the outcome that matters, the systems it lives in, and the buyer.</li>
+      </ul>`
+  },
+  {
+    label:"The Ask", n:"12",
+    html:`<div class="eyebrow">The Ask</div>
+      <h2>What we're raising &mdash; and where this goes.</h2>
+      <ul class="clean">
+        <li><strong>Raising:</strong> pre-seed on a SAFE, aligned to the round's target check size.</li>
+        <li><strong>Use of funds:</strong> ~12&ndash;18 months &mdash; convert design partners to paid pilots, build the first connectors, first technical hire.</li>
+        <li><strong>Milestone this buys:</strong> a design partner whose renewal decision our report changes.</li>
+      </ul>
+      <p class="emph">Vision: become the economic measurement layer for AI in complex engineering &mdash; starting with the silicon nobody else can measure.</p>`
+  },
+  {
+    label:"Appendix — Risks", n:"A1", sep:true,
+    html:`<div class="eyebrow">Appendix &mdash; Risks &amp; Mitigations</div>
+      <h2>We'd rather map the failure modes than have you find them.</h2>
+      <table class="grid">
+        <thead><tr><th>Risk</th><th>Our answer</th></tr></thead>
+        <tbody>
+          <tr><td>DV token spend not yet material</td><td>The validation program tests this first. Land where agentic DV is already live.</td></tr>
+          <tr><td>EDA telemetry is closed</td><td>Ingest through several modes (billing APIs, OpenTelemetry, local collectors). Target internal &amp; customer-owned agents.</td></tr>
+          <tr><td>A horizontal adds a connector</td><td>We win on depth of the outcome model, neutrality, and the dataset &mdash; not on being a logo in a menu.</td></tr>
+          <tr><td>An incumbent builds it</td><td>They're a conflicted meter. We're neutral across every agent.</td></tr>
+          <tr><td>Attribution isn't causation</td><td>Label metrics precisely (attributed, assisted, accepted, correlated). Honest correlation beats today's zero.</td></tr>
+        </tbody>
+      </table>`
+  }
+];
+
+// ---------- Render ----------
+const stage = document.getElementById('stage');
+const dotsWrap = document.getElementById('dots');
+const countEl = document.getElementById('count');
+const nameEl = document.getElementById('cur-name');
+let idx = 0;
+
+slides.forEach((s,i)=>{
+  const sec = document.createElement('section');
+  sec.className = 'slide' + (i===0?' active':'');
+  sec.innerHTML = s.html;
+  stage.appendChild(sec);
+
+  const b = document.createElement('button');
+  b.className = 'dot-btn' + (i===0?' active':'') + (s.sep?' sep':'');
+  b.setAttribute('aria-label', s.label);
+  b.innerHTML = `<span class="tip">${s.n} · ${s.label}</span>`;
+  b.addEventListener('click',()=>go(i));
+  dotsWrap.appendChild(b);
+});
+
+const slideEls = [...document.querySelectorAll('.slide')];
+const dotEls = [...document.querySelectorAll('.dot-btn')];
+
+function go(i){
+  i = Math.max(0, Math.min(slides.length-1, i));
+  slideEls[idx].classList.remove('active');
+  dotEls[idx].classList.remove('active');
+  idx = i;
+  slideEls[idx].classList.add('active');
+  slideEls[idx].scrollTop = 0;
+  dotEls[idx].classList.add('active');
+  countEl.textContent = `${slides[idx].n} / ${slides.length.toString().padStart(2,'0')}`;
+  nameEl.textContent = slides[idx].label;
+}
+
+document.getElementById('prev').addEventListener('click',()=>go(idx-1));
+document.getElementById('next').addEventListener('click',()=>go(idx+1));
+
+document.addEventListener('keydown',(e)=>{
+  if(e.key==='ArrowRight'||e.key==='PageDown'){go(idx+1)}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){go(idx-1)}
+  else if(e.key==='Home'){go(0)}
+  else if(e.key==='End'){go(slides.length-1)}
+});
+</script>
+</body>
+</html>
